@@ -24,16 +24,34 @@ function setup() {
   inputHour.position(centerX - 145, 230);
   inputHour.size(60);
   inputHour.attribute('placeholder', '00');
+  inputHour.style('background-color', '#EDE7F6');
+  inputHour.style('border', '1px solid #d8d0e8');
+  inputHour.style('border-radius', '6px');
+  inputHour.style('padding', '8px');
+  inputHour.style('text-align', 'center');
+  inputHour.style('color', '#666');
 
   inputMinute = createInput('');
   inputMinute.position(centerX - 60, 230);
   inputMinute.size(60);
   inputMinute.attribute('placeholder', '00');
+  inputMinute.style('background-color', '#D1C4E9');
+  inputMinute.style('border', '1px solid #d0e0f0');
+  inputMinute.style('border-radius', '6px');
+  inputMinute.style('padding', '8px');
+  inputMinute.style('text-align', 'center');
+  inputMinute.style('color', '#666');
 
   inputSecond = createInput('');
   inputSecond.position(centerX + 25, 230);
   inputSecond.size(60);
   inputSecond.attribute('placeholder', '00');
+  inputSecond.style('background-color', '#B39DDB');
+  inputSecond.style('border', '1px solid #f0e0d8');
+  inputSecond.style('border-radius', '6px');
+  inputSecond.style('padding', '8px');
+  inputSecond.style('text-align', 'center');
+  inputSecond.style('color', '#666');
 
   button = createButton('submit');
   button.position(centerX + 120, 230);
