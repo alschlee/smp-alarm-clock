@@ -1,4 +1,4 @@
-let button;
+let addButton;
 let inputHour, inputMinute, inputSecond;
 let labelHour, labelMinute, labelSecond;
 
@@ -53,9 +53,28 @@ function setup() {
   inputSecond.style('text-align', 'center');
   inputSecond.style('color', '#666');
 
-  button = createButton('submit');
-  button.position(centerX + 120, 230);
-  button.mousePressed(setTime);
+  addButton = createButton('+ 추가');
+  addButton.position(centerX + 120, 230);
+
+  addButton.style('background-color', '#f1f1f3');
+  addButton.style('border', '1px solid #e1e1e6');
+  addButton.style('border-radius', '20px');
+  addButton.style('width', '60px');
+  addButton.style('height', '36px');
+  addButton.style('color', '#6e6e80');
+  addButton.style('cursor', 'pointer');
+  addButton.style('font-size', '14px');
+  addButton.style('font-weight', '500');
+  addButton.style('box-shadow', '0 1px 3px rgba(0,0,0,0.06)');
+
+  addButton.mouseOver(() => {
+    addButton.style('background-color', '#e9e9ed');
+  });
+  addButton.mouseOut(() => {
+    addButton.style('background-color', '#f1f1f3');
+  });
+
+  addButton.mousePressed(addAlarm);
 }
 
 function draw() {
@@ -84,6 +103,10 @@ function draw() {
   text(currentTime, width/2, 172);
 }
 
-function setTime() {
-  console.log(inputHour.value(), inputMinute.value(), inputSecond.value());
+function addAlarm() {
+  let h = int(inputHour.value()) || 0;
+  let m = int(inputMinute.value()) || 0;
+  let s = int(inputSecond.value()) || 0;
+
+  console.log(h, m, s);
 }
