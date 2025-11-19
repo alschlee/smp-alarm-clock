@@ -4,7 +4,8 @@ let minutes;
 let seconds;
 
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(500, 750);
+  textAlign(CENTER, CENTER);
 
   hours = createInput();
   hours.size(20);
@@ -24,7 +25,16 @@ function setup() {
 }
 
 function draw() {
-  background(220);
+  background(250, 248, 252);
+
+  fill(80);
+  noStroke();
+  textSize(28);
+  text('⏰ 알람 시계', width/2, 50);
+
+  fill(100);
+  textSize(13);
+  text('시간을 입력하고 알람을 추가하세요', width/2, 85);
 }
 
 function setTime() {
