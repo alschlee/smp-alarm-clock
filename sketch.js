@@ -1,3 +1,4 @@
+let alarms = [];
 let addButton;
 let inputHour, inputMinute, inputSecond;
 let labelHour, labelMinute, labelSecond;
@@ -101,6 +102,27 @@ function draw() {
   fill(70);
   textSize(22);
   text(currentTime, width/2, 172);
+
+  fill(80);
+  textSize(16);
+  text('📋 등록된 알람', width/2, 315);
+
+  for (let i = 0; i < alarms.length; i++) {
+    let alarm = alarms[i];
+    let yPos = 360 + i * 55;
+
+    fill(245, 242, 248);
+    noStroke();
+    rect(50, yPos - 24, 400, 45, 8);
+
+    fill(70);
+    textSize(18);
+    text(
+        `${nf(alarm.h, 2)}:${nf(alarm.m, 2)}:${nf(alarm.s, 2)}`,
+        width/2 - 50,
+        yPos
+    );
+  }
 }
 
 function addAlarm() {
@@ -108,5 +130,10 @@ function addAlarm() {
   let m = int(inputMinute.value()) || 0;
   let s = int(inputSecond.value()) || 0;
 
-  console.log(h, m, s);
+  if (h >= 0 && h < 24 && m >= 0 && m < 60 && s >= 0 && s < 60) {
+    alarms.push({h: h, m: m, s: s, ringing: false});
+    inputHour.value('');
+    inputMinute.value('');
+    inputSecond.value('');
+  }
 }
