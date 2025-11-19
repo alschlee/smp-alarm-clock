@@ -1,26 +1,42 @@
 let button;
-let hours;
-let minutes;
-let seconds;
+let inputHour, inputMinute, inputSecond;
+let labelHour, labelMinute, labelSecond;
 
 function setup() {
   createCanvas(500, 750);
   textAlign(CENTER, CENTER);
 
-  hours = createInput();
-  hours.size(20);
-  hours.position(20, 65);
+  const centerX = width / 2;
 
-  minutes = createInput();
-  minutes.size(20);
-  minutes.position(50, 65);
+  labelHour = createP('시');
+  labelHour.position(centerX - 135, 200)
+      .style('color', '#888').style('font-size', '14px');
 
-  seconds = createInput();
-  seconds.size(20);
-  seconds.position(130, 65);
+  labelMinute = createP('분');
+  labelMinute.position(centerX - 50, 200)
+      .style('color', '#888').style('font-size', '14px');
+
+  labelSecond = createP('초');
+  labelSecond.position(centerX + 35, 200)
+      .style('color', '#888').style('font-size', '14px');
+
+  inputHour = createInput('');
+  inputHour.position(centerX - 145, 230);
+  inputHour.size(60);
+  inputHour.attribute('placeholder', '00');
+
+  inputMinute = createInput('');
+  inputMinute.position(centerX - 60, 230);
+  inputMinute.size(60);
+  inputMinute.attribute('placeholder', '00');
+
+  inputSecond = createInput('');
+  inputSecond.position(centerX + 25, 230);
+  inputSecond.size(60);
+  inputSecond.attribute('placeholder', '00');
 
   button = createButton('submit');
-  button.position(130, 65);
+  button.position(centerX + 120, 230);
   button.mousePressed(setTime);
 }
 
@@ -51,5 +67,5 @@ function draw() {
 }
 
 function setTime() {
-  console.log(hours.value(), minutes.value(), seconds.value());
+  console.log(inputHour.value(), inputMinute.value(), inputSecond.value());
 }
