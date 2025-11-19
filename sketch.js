@@ -1,7 +1,13 @@
 let alarms = [];
+let alarmSound;
 let addButton;
 let inputHour, inputMinute, inputSecond;
 let labelHour, labelMinute, labelSecond;
+let deleteButtons = [];
+
+function preload() {
+  alarmSound = loadSound('Long Time (Intro).mp3');
+}
 
 function setup() {
   createCanvas(500, 750);
@@ -56,7 +62,6 @@ function setup() {
 
   addButton = createButton('+ 추가');
   addButton.position(centerX + 120, 230);
-
   addButton.style('background-color', '#f1f1f3');
   addButton.style('border', '1px solid #e1e1e6');
   addButton.style('border-radius', '20px');
@@ -123,6 +128,29 @@ function draw() {
         yPos
     );
   }
+
+  updateButtons();
+}
+
+function updateButtons() {
+  for (let btn of deleteButtons) btn.remove();
+  deleteButtons = [];
+
+  for (let i = 0; i < alarms.length; i++) {
+    let yPos = 360 + i * 55;
+
+    let deleteBtn = createButton('삭제');
+    deleteBtn.position(380, yPos - 15);
+    deleteBtn.style('background-color', '#ffe0e0');
+    deleteBtn.style('border', 'none');
+    deleteBtn.style('border-radius', '6px');
+    deleteBtn.style('padding', '6px 14px');
+    deleteBtn.style('color', '#999');
+    deleteBtn.style('cursor', 'pointer');
+    deleteBtn.style('font-size', '12px');
+    deleteBtn.mousePressed(() => deleteAlarm(i));
+    deleteButtons.push(deleteBtn);
+  }
 }
 
 function addAlarm() {
@@ -131,9 +159,14 @@ function addAlarm() {
   let s = int(inputSecond.value()) || 0;
 
   if (h >= 0 && h < 24 && m >= 0 && m < 60 && s >= 0 && s < 60) {
-    alarms.push({h: h, m: m, s: s, ringing: false});
+    let newSound = loadSound('Long Time (Intro).mp3');
+    alarms.push({h: h, m: m, s: s, ringing: false, sound: newSound});
     inputHour.value('');
     inputMinute.value('');
     inputSecond.value('');
   }
+}
+
+function deleteAlarm(index) {
+  alarms.splice(index, 1);
 }
