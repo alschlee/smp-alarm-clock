@@ -159,6 +159,20 @@ function updateButtons() {
     deleteBtn.style('font-size', '12px');
     deleteBtn.mousePressed(() => deleteAlarm(i));
     deleteButtons.push(deleteBtn);
+
+    if (alarms[i].ringing) {
+      let stopBtn = createButton('멈춤');
+      stopBtn.position(310, yPos - 15);
+      stopBtn.style('background-color', '#e0f0ff');
+      stopBtn.style('border', 'none');
+      stopBtn.style('border-radius', '6px');
+      stopBtn.style('padding', '6px 14px');
+      stopBtn.style('color', '#999');
+      stopBtn.style('cursor', 'pointer');
+      stopBtn.style('font-size', '12px');
+      stopBtn.mousePressed(() => stopAlarm(i));
+      deleteButtons.push(stopBtn);
+    }
   }
 }
 
@@ -177,5 +191,15 @@ function addAlarm() {
 }
 
 function deleteAlarm(index) {
+  if (alarms[index].ringing && alarms[index].sound.isPlaying()) {
+    alarms[index].sound.stop();
+  }
   alarms.splice(index, 1);
+}
+
+function stopAlarm(index) {
+  if (alarms[index].sound.isPlaying()) {
+    alarms[index].sound.stop();
+  }
+  alarms[index].ringing = false;
 }
