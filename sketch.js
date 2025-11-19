@@ -35,6 +35,19 @@ function draw() {
   fill(100);
   textSize(13);
   text('시간을 입력하고 알람을 추가하세요', width/2, 85);
+
+  fill(245, 240, 250);
+  noStroke();
+  rect(width/2 - 120, 125, 240, 65, 10);
+
+  fill(100);
+  textSize(14);
+  text('🕐 현재 시각', width/2, 145);
+
+  let currentTime = `${nf(hour(), 2)}:${nf(minute(), 2)}:${nf(second(), 2)}`;
+  fill(70);
+  textSize(22);
+  text(currentTime, width/2, 172);
 }
 
 function setTime() {
