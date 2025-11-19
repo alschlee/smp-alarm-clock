@@ -127,6 +127,15 @@ function draw() {
         width/2 - 50,
         yPos
     );
+
+    if (hour() === alarm.h && minute() === alarm.m && second() === alarm.s) {
+      if (!alarm.ringing) {
+        alarm.ringing = true;
+        if (!alarm.sound.isPlaying()) {
+          alarm.sound.play();
+        }
+      }
+    }
   }
 
   updateButtons();
