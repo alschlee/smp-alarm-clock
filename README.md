@@ -5,6 +5,12 @@ p5.js를 이용한 인터랙티브 알람 시계 웹 애플리케이션
 
 ## 주요 기능
 
+<div style="display: flex; justify-content: space-between;">
+  <img src="https://github.com/user-attachments/assets/63507353-2dc1-4798-85fc-309758017adb" width="220" />
+  <img src="https://github.com/user-attachments/assets/c4443630-9fcb-4630-83f5-f03f80eb3441" width="220" />
+  <img src="https://github.com/user-attachments/assets/150ad1f6-da8c-43da-ad43-d92000130cd7" width="220" />
+</div>
+
 - 시/분/초 단위로 알람 시간 설정
 - 여러 개의 알람 동시 등록 및 관리
 - 실시간 현재 시각 표시
